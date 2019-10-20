@@ -72,14 +72,17 @@ namespace SchereSteinPapierArbiter
 
             if (_playerRegistry.ContainsKey(name))
             {
+                Console.WriteLine("Player with name {0} already registered", name);
                 return false;
             }
+            Console.WriteLine("Player {0} successfully registered!", name);
             _playerRegistry.Add(name, connectionString);
             return true;
         }
 
         public bool UnregisterPlayer(string name)
         {
+            Console.WriteLine("Unregistering {0}", name);
             return _playerRegistry.Remove(name);
         }
 
