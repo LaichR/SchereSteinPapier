@@ -14,3 +14,5 @@ Solution/.vs/ScherSteinPapierServer/v16/Server/sqlite3/db.lock
 *.cache
 *.CopyComplete
 *.txt
+*.ide-shm
+*.ide-wal
