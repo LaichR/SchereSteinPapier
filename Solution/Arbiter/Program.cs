@@ -30,7 +30,7 @@ namespace SchereSteinPapierArbiter
                     binding,
                     SchereSteinPapierTools.ArbiterService);
                 host.Open();
-                Console.WriteLine("Schere Stein Papier Service ready - enter quit to stop");
+                Console.WriteLine("Schere Stein Papier Arbiter ready - enter quit to stop");
 
                 var cmd = Console.ReadLine();
                 while (cmd.Trim() != "quit")
