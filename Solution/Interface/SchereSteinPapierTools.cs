@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SchereSteinPapierInterface
 {
+    /// <summary>
+    /// Helper class. Provides a static operation to evaluate a single game and two string constants.
+    /// </summary>
     public static class SchereSteinPapierTools
     {
         public const string ArbiterService = "ShereSteinPapier.ArbiterService";

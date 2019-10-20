@@ -78,6 +78,11 @@ namespace SchereSteinPapierArbiter
             return true;
         }
 
+        public bool UnregisterPlayer(string name)
+        {
+            return _playerRegistry.Remove(name);
+        }
+
         ChannelFactory<ISchereSteinPapierPlayer> GetSchereSteinPapierPlayer(string connectionString)
         {
             var address = string.Format("net.tcp://{0}/{1}", connectionString, SchereSteinPapierTools.PlayerService);
@@ -99,11 +104,16 @@ namespace SchereSteinPapierArbiter
             {
                 return string.Format("no player {0} registered", name);
             }
-
-            using (var channelFactory = GetSchereSteinPapierPlayer(connectionString))
+            try
             {
-                var channel = channelFactory.CreateChannel();
-                return channel.Ping();
+                using (var channelFactory = GetSchereSteinPapierPlayer(connectionString))
+                {
+                    var channel = channelFactory.CreateChannel();
+                    return channel.Ping();
+                }
+            }catch(Exception e)
+            {
+                return string.Format("error during ping: \n{0}", e.Message);
             }
         }
 
@@ -111,12 +121,17 @@ namespace SchereSteinPapierArbiter
         {
             foreach (var connectionString in _playerRegistry.Values)
             {
-                using (var channelFactory = GetSchereSteinPapierPlayer(connectionString))
+                try
                 {
-                    var player = channelFactory.CreateChannel();
-                    player.Close();
+                    using (var channelFactory = GetSchereSteinPapierPlayer(connectionString))
+                    {
+                        var player = channelFactory.CreateChannel();
+                        player.Close();
+                    }
                 }
+                catch { }
             }
+            _playerRegistry.Clear();
         }
 
         internal IEnumerable<KeyValuePair<string, string>> RegisteredPlayers

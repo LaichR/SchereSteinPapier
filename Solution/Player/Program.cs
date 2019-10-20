@@ -11,9 +11,13 @@ using SchereSteinPapierInterface;
 
 namespace SchereSteinPapierPlayer
 {
+    /// <summary>
+    /// This is the entry point for the process that hosts the WCF service ISchereSteinPapier player. 
+    /// The service could be hosted in a thread instead. 
+    /// This would be the appropriate solution if a GUI was required.
+    /// </summary>
     class Program
     {
-        
         static void Main(string[] args)
         {
             if (args.Length != 1)
