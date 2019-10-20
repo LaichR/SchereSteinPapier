@@ -1,0 +1,16 @@
+
+Solution/.vs/ScherSteinPapier/DesignTimeBuild/.dtbcache
+Solution/.vs/ScherSteinPapier/v16/.suo
+Solution/.vs/ScherSteinPapier/v16/Server/sqlite3/db.lock
+*.ide
+*.testlog
+*.manifest
+Solution/.vs/ScherSteinPapierServer/v16/.suo
+Solution/.vs/ScherSteinPapierServer/DesignTimeBuild/.dtbcache
+Solution/.vs/ScherSteinPapierServer/v16/Server/sqlite3/db.lock
+*.dll
+*.exe
+*.pdb
+*.cache
+*.CopyComplete
+*.txt
