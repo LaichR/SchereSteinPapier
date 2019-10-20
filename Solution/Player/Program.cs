@@ -53,7 +53,7 @@ namespace SchereSteinPapierPlayer
                     binding,
                     SchereSteinPapierTools.PlayerService);
                 host.Open();
-                Console.WriteLine("Schere Stein Papier Player Started - enter quit to stop");
+                Console.WriteLine("Schere Stein Papier Player started");
 
                 var address = string.Format("net.tcp://{0}/{1}", serviceConnection, SchereSteinPapierTools.ArbiterService);
                 //var instanceContext = new InstanceContext( impl );
