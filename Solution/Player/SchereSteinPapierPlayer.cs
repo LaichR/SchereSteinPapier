@@ -7,6 +7,7 @@ using SchereSteinPapierInterface;
 using System.ServiceModel;
 using System.Net;
 using System.Net.Sockets;
+using System.Net.NetworkInformation;
 
 
 namespace SchereSteinPapierPlayer
@@ -17,16 +18,18 @@ namespace SchereSteinPapierPlayer
         int _port = 9095;
         FeedForwardNetwork _network;
         string _name;
+        string _networkInterface;
         AutoResetEvent _awaitDone;
         Random _rand;
+
         Dictionary<string, Func<int, ESchereSteinPapier, ESchereSteinPapier, ESchereSteinPapier>> _playStrategies = new Dictionary<string, Func<int, ESchereSteinPapier, ESchereSteinPapier, ESchereSteinPapier>>();
 
-        public SchereSteinPapierPlayer( string name, int port, AutoResetEvent @await )
+        public SchereSteinPapierPlayer( string name, int port, string networkInterface, AutoResetEvent @await )
         {
             _port = port;
             _name = name;
             _awaitDone = @await;
-            
+            _networkInterface = networkInterface;
             _playStrategies = new Dictionary<string, Func<int, ESchereSteinPapier, ESchereSteinPapier, ESchereSteinPapier>>
             {
                 {"Dummy", DummyToss },
@@ -87,18 +90,24 @@ namespace SchereSteinPapierPlayer
             get
             {
                 // modify if port 9095 is already in use or if your want ot have multiple clients
-                return string.Format("{0}/{1}", GetLocalIPAddress(), _port);
+                return string.Format("{0}/{1}", GetLocalIPAddress(_networkInterface), _port);
             }
         }
 
-        static string GetLocalIPAddress()
+        public static string GetLocalIPAddress(string networkInterface)
         {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
+            foreach (var ni in NetworkInterface.GetAllNetworkInterfaces().Where(x =>
+                x.Name == networkInterface &&
+                x.OperationalStatus == OperationalStatus.Up))
             {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                var properties = ni.GetIPProperties();
+                Console.WriteLine("Dns Suffix = {0}", properties.DnsSuffix);
+                var ipv4Props = properties.GetIPv4Properties();
+                var addresses =  properties.UnicastAddresses.Where(x =>
+                    x.Address.AddressFamily == AddressFamily.InterNetwork);
+                if( addresses.Count() > 0)
                 {
-                    return ip.ToString();
+                    return addresses.First().Address.ToString();
                 }
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");
