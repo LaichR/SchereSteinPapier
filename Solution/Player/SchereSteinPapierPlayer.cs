@@ -90,24 +90,28 @@ namespace SchereSteinPapierPlayer
             get
             {
                 // modify if port 9095 is already in use or if your want ot have multiple clients
-                return string.Format("{0}/{1}", GetLocalIPAddress(_networkInterface), _port);
+                return string.Format("{0}:{1}", GetLocalIPAddress(_networkInterface), _port);
             }
         }
 
-        public static string GetLocalIPAddress(string networkInterface)
+        public static string GetLocalIPAddress(string networkInterface )
         {
             foreach (var ni in NetworkInterface.GetAllNetworkInterfaces().Where(x =>
-                x.Name == networkInterface &&
                 x.OperationalStatus == OperationalStatus.Up))
             {
+                
                 var properties = ni.GetIPProperties();
-                Console.WriteLine("Dns Suffix = {0}", properties.DnsSuffix);
-                var ipv4Props = properties.GetIPv4Properties();
-                var addresses =  properties.UnicastAddresses.Where(x =>
-                    x.Address.AddressFamily == AddressFamily.InterNetwork);
-                if( addresses.Count() > 0)
+                if (ni.Name == networkInterface ||
+                    properties.DnsSuffix == networkInterface)
                 {
-                    return addresses.First().Address.ToString();
+
+                    var ipv4Props = properties.GetIPv4Properties();
+                    var addresses = properties.UnicastAddresses.Where(x =>
+                       x.Address.AddressFamily == AddressFamily.InterNetwork);
+                    if (addresses.Count() > 0)
+                    {
+                        return addresses.First().Address.ToString();
+                    }
                 }
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");

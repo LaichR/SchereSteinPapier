@@ -53,6 +53,7 @@ namespace SchereSteinPapierTest
         }
 
         [TestCase("Wi-Fi")]
+        [TestCase("guest.edu-zg.ch")]
         public void TestGetLocalIpAddress(string networkInterface)
         {
             var addr = SchereSteinPapierPlayer

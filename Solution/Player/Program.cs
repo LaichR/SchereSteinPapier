@@ -51,6 +51,7 @@ namespace SchereSteinPapierPlayer
                 binding.Security.Mode = SecurityMode.None;
                 binding.ReceiveTimeout = TimeSpan.MaxValue; // do not timeout at all!
                 binding.SendTimeout = TimeSpan.MaxValue;
+                
                 var endpoint = host.AddServiceEndpoint(
                     typeof(ISchereSteinPapierPlayer),
                     binding,
