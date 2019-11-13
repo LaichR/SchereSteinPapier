@@ -36,14 +36,13 @@ namespace SchereSteinPapierArbiter
             get => _stats[2];
         }
 
-        internal void UpdateStats()
+        internal void UpdateStats(ESchereSteinPapier s1, ESchereSteinPapier s2)
         {
-            
-            var index = SchereSteinPapierTools.EvalGame(Player1Selection, Player2Selection);
-            Console.WriteLine("Player1: {0}, Player2: {1} => winner = Player{2}", Player1Selection, Player2Selection, index);
+            Player1Selection = s1;
+            Player2Selection = s2;
+            var index = SchereSteinPapierTools.EvalGame(s1, s2);
+            Console.WriteLine("Player1: {0}, Player2: {1} => winner = Player {2}", Player1Selection, Player2Selection, index);
             _stats[index]++;
         }
-
-
     }
 }

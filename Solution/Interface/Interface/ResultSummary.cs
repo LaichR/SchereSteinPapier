@@ -24,6 +24,20 @@ namespace SchereSteinPapierInterface
             set;
         }
 
+        [DataMember] 
+        public int NrOfGamesWonByPlayer1
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public int NrOfGamesWonByPlayer2
+        {
+            get;
+            set;
+        }
+
         [DataMember]
         public int TotalNumberOfGames
         {

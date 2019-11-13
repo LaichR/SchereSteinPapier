@@ -24,8 +24,10 @@ namespace SchereSteinPapierPlayer
             {
                 Console.WriteLine("usage: <ip address or host name of service>:<port of service>");
             }
+            
             var awaitDone = new AutoResetEvent(false);
             var name = ConfigurationManager.AppSettings.Get("Name");
+            var networkInterface = ConfigurationManager.AppSettings.Get("NetworkInterfaceName");
             Assert.True(!string.IsNullOrEmpty(name), 
                 "name needs to be specified");
             Assert.True(int.TryParse(ConfigurationManager.AppSettings.Get("Port"), out int port),
@@ -33,7 +35,8 @@ namespace SchereSteinPapierPlayer
             
             string serviceConnection = args[0];
 
-            var instance = new SchereSteinPapierPlayer(name, port, awaitDone);
+            var instance = new SchereSteinPapierPlayer(name, port, networkInterface, awaitDone);
+            
  
             string baseAddress = "net.tcp://{0}";
             baseAddress = string.Format(baseAddress, instance.ConnectionString);
@@ -48,6 +51,7 @@ namespace SchereSteinPapierPlayer
                 binding.Security.Mode = SecurityMode.None;
                 binding.ReceiveTimeout = TimeSpan.MaxValue; // do not timeout at all!
                 binding.SendTimeout = TimeSpan.MaxValue;
+                
                 var endpoint = host.AddServiceEndpoint(
                     typeof(ISchereSteinPapierPlayer),
                     binding,
@@ -69,8 +73,24 @@ namespace SchereSteinPapierPlayer
                     var service = serviceFactory.CreateChannel();
                     if (service.RegisterPlayer(instance.Name, instance.ConnectionString))
                     {
-                        Console.WriteLine("Player successfully registered - ready to play");
-                        awaitDone.WaitOne();
+                        try
+                        {
+                            UiHandler handler = new UiHandler(instance.Name, awaitDone, service);
+                            Console.WriteLine("Player successfully registered - ready to play");
+
+                            var thread = new Thread(
+                                () => handler.UiHandlerActivity())
+                            {
+                                IsBackground = true
+                            };
+                            thread.Start();
+                            awaitDone.WaitOne();
+                        }
+                        catch
+                        {
+                            service.UnregisterPlayer(instance.Name);
+                            awaitDone.Set();
+                        }
                     }
                 }
             }

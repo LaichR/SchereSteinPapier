@@ -57,6 +57,13 @@ namespace SchereSteinPapierArbiter
                     {
                         Ping(instance);
                     }
+                    else if( cmd == "tournament")
+                    {
+                        instance.ResetVictoryStats();
+                        instance.PlayAll(instance.RegisteredPlayers.Select<
+                            KeyValuePair<string, string>, string>(x => x.Key), 200);
+                        instance.PrintVictoryStats();
+                    }
                     cmd = Console.ReadLine();
                 }
                 instance.CloseAllPlayers();
