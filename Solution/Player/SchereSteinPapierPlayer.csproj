@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RuntimeCheck, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RuntimeCheck\RuntimeCheck.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -57,10 +61,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\RuntimeCheck\RuntimeCheck\RuntimeCheck\RuntimeCheck.csproj">
-      <Project>{f1c2b260-e44d-4a5e-8112-7e2d36b727d6}</Project>
-      <Name>RuntimeCheck</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interface\SchereSteinPapierInterface.csproj">
       <Project>{88e75edd-aa67-4671-9985-e93d45e2b546}</Project>
       <Name>SchereSteinPapierInterface</Name>

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchereSteinPapierInterface"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchereSteinPapierPlayer", "Player\SchereSteinPapierPlayer.csproj", "{BE7D76D1-1CD2-4F4B-A888-B5B3E50FA76B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuntimeCheck", "%GIT_ROOT%\RuntimeCheck\RuntimeCheck\RuntimeCheck\RuntimeCheck.csproj", "{F1C2B260-E44D-4A5E-8112-7E2D36B727D6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchereSteinPapierTest", "SchereSteinPapierTest\SchereSteinPapierTest.csproj", "{79F3ABAD-540D-44FE-8E32-7CC7940E9172}"
 EndProject
 Global
@@ -31,10 +29,6 @@ Global
 		{BE7D76D1-1CD2-4F4B-A888-B5B3E50FA76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE7D76D1-1CD2-4F4B-A888-B5B3E50FA76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE7D76D1-1CD2-4F4B-A888-B5B3E50FA76B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1C2B260-E44D-4A5E-8112-7E2D36B727D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1C2B260-E44D-4A5E-8112-7E2D36B727D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1C2B260-E44D-4A5E-8112-7E2D36B727D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1C2B260-E44D-4A5E-8112-7E2D36B727D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79F3ABAD-540D-44FE-8E32-7CC7940E9172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79F3ABAD-540D-44FE-8E32-7CC7940E9172}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F3ABAD-540D-44FE-8E32-7CC7940E9172}.Release|Any CPU.ActiveCfg = Release|Any CPU
