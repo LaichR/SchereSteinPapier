@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchereSteinPapierPlayer", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchereSteinPapierTest", "SchereSteinPapierTest\SchereSteinPapierTest.csproj", "{79F3ABAD-540D-44FE-8E32-7CC7940E9172}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuntimeCheck", "RuntimeCheck\RuntimeCheck\RuntimeCheck.csproj", "{F29DF847-B37F-4C88-A7AC-0CC92157F5A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{79F3ABAD-540D-44FE-8E32-7CC7940E9172}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F3ABAD-540D-44FE-8E32-7CC7940E9172}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79F3ABAD-540D-44FE-8E32-7CC7940E9172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F29DF847-B37F-4C88-A7AC-0CC92157F5A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F29DF847-B37F-4C88-A7AC-0CC92157F5A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F29DF847-B37F-4C88-A7AC-0CC92157F5A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F29DF847-B37F-4C88-A7AC-0CC92157F5A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
