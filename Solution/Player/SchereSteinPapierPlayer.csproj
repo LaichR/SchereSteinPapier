@@ -34,10 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RuntimeCheck, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\RuntimeCheck\RuntimeCheck.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -64,6 +60,10 @@
     <ProjectReference Include="..\Interface\SchereSteinPapierInterface.csproj">
       <Project>{88e75edd-aa67-4671-9985-e93d45e2b546}</Project>
       <Name>SchereSteinPapierInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RuntimeCheck\RuntimeCheck\RuntimeCheck.csproj">
+      <Project>{f29df847-b37f-4c88-a7ac-0cc92157f5a8}</Project>
+      <Name>RuntimeCheck</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
